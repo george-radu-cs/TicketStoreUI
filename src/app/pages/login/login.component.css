@@ -1,0 +1,53 @@
+.form-container {
+  background-color: #fafafe;
+  border-radius: .5rem;
+  margin: 5vh 0;
+  padding: 1rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  min-width: 20rem;
+  position: relative;
+}
+
+.btn-login-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background-color: #6e72fc;
+  background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
+  color: #ffffff;
+  border: none;
+  border-radius: 2rem;
+}
+
+.btn-redirect {
+  background-color: #ffffff;
+  border: none;
+  color: #ad1deb;
+  border-bottom: .1rem solid #ad1deb;
+}
+
+.alert-danger {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: .5rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  font-size: .9rem;
+  word-break: break-word;
+  max-width: 29rem;
+}

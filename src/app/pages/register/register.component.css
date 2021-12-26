@@ -1,0 +1,77 @@
+form {
+  background-color: #fafafe;
+  border-radius: .5rem;
+  margin: 5vh 0;
+  padding: 1rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  min-width: 30rem;
+  position: relative;
+}
+
+.form-group-row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group-row > input {
+  max-width: 2rem;
+  margin-right: 1vw;
+}
+
+.phone-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.phone-container input {
+  width: 100%;
+}
+
+label {
+  margin-bottom: .2rem;
+  margin-right: .5rem;
+  display: block;
+}
+
+.invalid {
+  border: .15rem solid #C70039;
+}
+
+.ng-valid:not(form) {
+  border: 2px solid #42A948;
+}
+
+.btn-register-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background-color: #6e72fc;
+  background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
+  color: #ffffff;
+  border: none;
+  border-radius: 2rem;
+}
+
+.btn-redirect {
+  background-color: #ffffff;
+  border: none;
+  color: #ad1deb;
+  border-bottom: .1rem solid #ad1deb;
+}
