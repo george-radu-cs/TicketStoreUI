@@ -7,9 +7,10 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {RegisterComponent} from './pages/register/register.component';
 import {LoginComponent} from './pages/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import { ButtonHighlightDirective } from './directives/button-highlight.directive';
-import { ButtonRedirectDirective } from './directives/button-redirect.directive';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ButtonHighlightDirective} from './directives/button-highlight.directive';
+import {ButtonRedirectDirective} from './directives/button-redirect.directive';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { ButtonRedirectDirective } from './directives/button-redirect.directive'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
