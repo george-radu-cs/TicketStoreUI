@@ -109,7 +109,7 @@ export class RegisterComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => console.error(error.error),
         complete: () => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['login']);
         },
       });
     } else { // if the register form is invalid then alert the user to complete the form

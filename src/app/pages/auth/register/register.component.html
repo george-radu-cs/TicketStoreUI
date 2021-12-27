@@ -1,0 +1,179 @@
+<div class="auth-container">
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+    <h1>Register</h1>
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input
+        class="form-control"
+        formControlName="firstName"
+        [ngClass]="isControlValid('firstName') ? 'valid' : 'invalid'"
+      />
+
+      <div *ngIf="!isControlValid('firstName')" class="alert alert-danger">
+        <div *ngIf="firstName.errors?.['required']">
+          First Name is required!
+        </div>
+        <div *ngIf="firstName.errors?.['minlength']">
+          The name must have at least 3 letters!
+        </div>
+        <div *ngIf="firstName.errors?.['maxlength']">
+          The name must be at most 21 letters long!
+        </div>
+        <div *ngIf="firstName.errors?.['pattern']">
+          The name must contain only words composed only of letters separated by a single space! Check for spaces before
+          and after the name.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input
+        class="form-control"
+        formControlName="lastName"
+        [ngClass]="isControlValid('lastName') ? 'valid' : 'invalid'"
+      />
+
+      <div *ngIf="!isControlValid('lastName')" class="alert alert-danger">
+        <div *ngIf="lastName.errors?.['required']">
+          Last Name is required!
+        </div>
+        <div *ngIf="lastName.errors?.['minlength']">
+          The name must have at least 3 letters!
+        </div>
+        <div *ngIf="lastName.errors?.['maxlength']">
+          The name must be at most 21 letters long!
+        </div>
+        <div *ngIf="lastName.errors?.['pattern']">
+          The name must contain only words composed only of letters separated by a single space! Check for spaces before
+          and after the name.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        [ngClass]="isControlValid('email') ? 'valid' : 'invalid'"
+      />
+
+      <div *ngIf="!isControlValid('email')" class="alert alert-danger">
+        <div *ngIf="email.errors?.['required']">
+          The Email is required!
+        </div>
+        <div *ngIf="email.errors?.['pattern']">
+          The Email is invalid!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <div class="phone-container">
+        <select
+          class="form-control"
+          formControlName="phonePrefix"
+          [ngClass]="isControlValid('phonePrefix') ? 'valid' : 'invalid'"
+        >
+          <option value="" disabled>+0</option>
+          <option *ngFor="let phonePrefix of phonePrefixes" [ngValue]="phonePrefix">{{phonePrefix}}</option>
+        </select>
+        <input
+          class="form-control"
+          formControlName="phoneNumber"
+          [ngClass]="isControlValid('phoneNumber') ? 'valid' : 'invalid'"
+        />
+      </div>
+
+      <div *ngIf="!isControlValid('phoneNumber')" class="alert alert-danger">
+        <div *ngIf="phonePrefix.errors?.['required']">
+          The Phone Prefix is required!
+        </div>
+        <div *ngIf="phoneNumber.errors?.['required']">
+          The Phone Number is required!
+        </div>
+        <div *ngIf="phoneNumber.errors?.['pattern']">
+          The Phone Number is invalid! Valid example: 222-222-2222, (222)-222-2222, 222.222.2222
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-group-row">
+      <label>Age</label>
+      <input
+        class="form-control"
+        formControlName="age"
+        [ngClass]="isControlValid('age') ? 'valid' : 'invalid'"
+      />
+
+      <div *ngIf="!isControlValid('age')" class="alert alert-danger">
+        <div *ngIf="age.errors?.['required']">
+          Age is required!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-group-row">
+      <label>I'm student</label>
+      <input
+        class="form-control"
+        type="checkbox"
+        formControlName="isStudent"
+        [ngClass]="isControlValid('isStudent') ? 'valid' : 'invalid'"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        class="form-control"
+        type="password"
+        formControlName="password"
+        [ngClass]="isControlValid('password') ? 'valid' : 'invalid'"
+      />
+
+      <div *ngIf="!isControlValid('password')" class="alert alert-danger">
+        <div *ngIf="password.errors?.['required']">
+          Password is required!
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          The password must have at least 6 characters!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Role</label>
+      <select
+        class="form-control"
+        formControlName="role"
+        [ngClass]="isControlValid('role') ? 'valid' : 'invalid'"
+      >
+        <option value="" disabled>Choose a role</option>
+        <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+      </select>
+
+      <div *ngIf="!isControlValid('role')" class="alert alert-danger">
+        <div *ngIf="role.errors?.['required']">
+          Age is required!
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-register-container">
+      <button type="submit" class="btn btn-success" appButtonHighlight>
+        Register
+      </button>
+    </div>
+
+    <div>
+      <button class="btn-redirect" [routerLink]="'/auth/login'" appButtonRedirect>
+        I already have an account.
+      </button>
+    </div>
+  </form>
+</div>
