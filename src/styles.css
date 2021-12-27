@@ -2,6 +2,8 @@
 html, body {
   font-size: 1.1rem;
   background-color: #d5eafc;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -10,9 +12,6 @@ h1 {
 
 body {
   display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
 }
 
 input {
@@ -61,3 +60,13 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: center;
 }
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

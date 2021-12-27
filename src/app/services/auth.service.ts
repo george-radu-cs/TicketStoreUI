@@ -24,7 +24,20 @@ export class AuthService {
     return this.http.post<Token>(`${this.authUrl}/login`, data, this.httpHeaders);
   }
 
-  register(data: RegisterUser): Observable<any> {
+  public register(data: RegisterUser): Observable<any> {
     return this.http.post<any>(`${this.authUrl}/sign-up`, data, this.httpHeaders);
+  }
+
+  public getRole(): string {
+    // try to get the token from local storage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return '';
+    }
+    // decode the claims from the jwt token
+
+    const decoderJWT = JSON.parse(window.atob(token.split('.')[1]));
+
+    return decoderJWT.role;
   }
 }

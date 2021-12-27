@@ -10,7 +10,7 @@ form {
 
 .form-group {
   display: flex;
-  flex: 1;
+
   flex-direction: column;
   margin-bottom: 1rem;
   min-width: 30rem;
@@ -29,7 +29,7 @@ form {
 
 .phone-container {
   display: flex;
-  flex: 1;
+
   flex-direction: row;
   justify-content: flex-start;
 }

@@ -10,7 +10,7 @@
 
 .form-group {
   display: flex;
-  flex: 1;
+
   flex-direction: column;
   margin-bottom: 1rem;
   min-width: 20rem;

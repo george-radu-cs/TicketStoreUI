@@ -1,15 +1,41 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './pages/login/login.component';
-import {RegisterComponent} from './pages/register/register.component';
-import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {LoggedInGuard} from './guards/logged-in.guard';
+import {NotFoundComponent} from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [LoggedInGuard]},
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/auth/login',
+  },
+  {
+    path: 'dashboard',
+    canActivate: [LoggedInGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+      },
+    ],
+  },
+  {
+    path: 'auth',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/pages/auth/auth.module').then(m => m.AuthModule),
+      }
+    ]
+  },
+  {
+    path: '404',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '404',
+  }
 ];
 
 @NgModule({

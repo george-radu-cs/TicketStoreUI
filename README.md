@@ -23,22 +23,30 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a
 package that implements end-to-end testing capabilities.
 
+## Scope
+
+This project want to showcase the angular framework with some features from it.
+The UI is made for an ADMIN user to simplify it, because all I want was to showcase ...
+
 ## TODO
 
 - [ ] add pipes
-- [ ] add routing (simple and complex)
-- [ ] set up redirects
+- [x] add routing (simple and complex)
+- [x] set up redirects
 - [ ] create 3 services, show data received from services in components
 - [ ] 2 reactive forms (auth not considered)
 - [ ] communication between components
-- [ ] add auth
+- [x] add auth
   - [x] add register
   - [x] add login
-  - [ ] add logout
+  - [x] add logout
 - [x] implement guards
 - [x] add angular directives
-- [ ] add event service
+- [x] add event service
 - [ ] add ticket service
 - [ ] add review service
-- [ ] add shared service for user info
+- [x] add service for user info
 - [x] add authorization interceptor
+- [x] create all interfaces
+- [ ] add/edit an event
+- [ ] view an event

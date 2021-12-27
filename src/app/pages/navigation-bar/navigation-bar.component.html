@@ -1,0 +1,13 @@
+<div class="navbar-container">
+  <h1>Ticket Store</h1>
+  <nav>
+    <div *ngFor="let menu of menus">
+      <a routerLink="{{menu.link}}" routerLinkActive="active">{{menu.label}}</a>
+    </div>
+  </nav>
+  <div>
+    <button class="btn-logout" (click)="logout()">
+      Log Out
+    </button>
+  </div>
+</div>
