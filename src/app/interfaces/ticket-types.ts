@@ -1,9 +1,10 @@
 export interface TicketTypes {
   id: string;
   numberStandardTickets: number;
-  priceStandardTickets: string;
+  priceStandardTicket: string;
   numberVipTickets: number;
-  priceVipTickets: string;
-  priceChildTickets: string;
-  priceStudentTickets: string;
+  priceVipTicket: string;
+  priceChildTicket: string;
+  priceStudentTicket: string;
+  priceCurrency: string;
 }

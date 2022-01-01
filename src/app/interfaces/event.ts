@@ -8,7 +8,7 @@ export interface Event {
   name: string;
   shortName: string;
   description: string;
-  startDate: Date;
+  startDate: string;
   endDate: string;
   category: string;
   genre: string;

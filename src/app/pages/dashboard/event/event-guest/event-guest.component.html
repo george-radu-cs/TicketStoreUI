@@ -1,0 +1,38 @@
+<div *ngIf="guest" class="event-guest-container">
+  <h3>Guest no. {{number}}</h3>
+
+  <div class="value-container">
+    <div class="label-name">First name:</div>
+    <div class="value-name">{{guest.firstName}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Last name:</div>
+    <div class="value-name">{{guest.lastName}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Scene name:</div>
+    <div class="value-name">{{guest.sceneName}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Description:</div>
+    <div class="value-name">{{guest.description}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Category:</div>
+    <div class="value-name">{{guest.category}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Genre:</div>
+    <div class="value-name">{{guest.genre}}</div>
+  </div>
+
+  <div class="value-container">
+    <div class="label-name">Age:</div>
+    <div class="value-name">{{guest.age}}</div>
+  </div>
+</div>

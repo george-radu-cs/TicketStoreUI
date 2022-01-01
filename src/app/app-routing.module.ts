@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/auth/login',
+    redirectTo: '/dashboard/event-menu/events',
   },
   {
     path: 'dashboard',

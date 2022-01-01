@@ -1,0 +1,25 @@
+.event-guest-container {
+
+}
+
+.value-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+  margin-bottom: .3vh;
+}
+
+.label-name {
+  font-weight: bold;
+  margin-right: .5vw;
+}
+
+.value-name {
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}

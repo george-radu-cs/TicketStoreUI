@@ -1,0 +1,110 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: .7rem;
+  padding: 1vh 0;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6e72fc;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.form {
+  width: 25%;
+  margin: 1vh 2vw;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-label {
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1rem;
+}
+
+mat-select {
+  font-size: 1rem;
+}
+
+mat-form-field input {
+  width: 100%;
+}
+
+.save-button {
+  width: 50vw;
+  padding: .5vh 0;
+  font-size: 1.2rem;
+  background-color: #d5eafc;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.price-container > mat-form-field:first-child {
+  width: 80%;
+}
+
+.price-container > mat-form-field:last-child {
+  width: 20%;
+}
+
+.guests-container {
+  margin: 1vh 2vw;
+  width: 100%;
+}
+
+.guests-form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.guest-form-container {
+  margin-right: 2vw;
+}
+
+.guest-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: .5vh;
+  width: 100%;
+}
+
+.guest-title-container h2 {
+  margin-right: 2vw;
+}
+
+.guest-form {
+  display: flex;
+  flex-direction: column;
+}

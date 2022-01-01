@@ -1,0 +1,44 @@
+.review-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 1rem;
+  text-wrap: normal;
+  margin-bottom: 3vh;
+}
+
+.review-user {
+  margin-right: 5vw;
+}
+
+.review-user-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.review-content {
+}
+
+.review-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.rating-container {
+  margin-bottom: 1vh;
+}
+
+.rating-star {
+  color:gold;
+}
+
+.rating-star-filled {
+
+}
+
+.rating-star-empty {
+  color: #d5eafc;
+}

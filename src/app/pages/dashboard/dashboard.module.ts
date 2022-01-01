@@ -5,7 +5,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EventModule} from './event/event.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
