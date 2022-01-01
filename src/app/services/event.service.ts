@@ -31,14 +31,14 @@ export class EventService {
   }
 
   public createEvent(event: Event): Observable<any> {
-    return this.http.post(`${this.eventUrl}/create-event`, event);
+    return this.http.post(`${this.eventUrl}/create-event`, event, this.httpHeaders);
   }
 
   public editEvent(event: Event): Observable<any> {
-    return this.http.patch(`${this.eventUrl}/update-event`, event);
+    return this.http.patch(`${this.eventUrl}/update-event`, event, this.httpHeaders);
   }
 
   public deleteEvent(id: string): Observable<any> {
-    return this.http.delete(`${this.eventUrl}/delete/${id}`);
+    return this.http.delete(`${this.eventUrl}/delete/${id}`, this.httpHeaders);
   }
 }

@@ -7,6 +7,7 @@ export interface Review {
   title: string;
   message: string;
   rating: string;
+  date: string;
   user: User;
   event: Event;
 }

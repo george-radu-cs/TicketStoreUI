@@ -1,0 +1,71 @@
+.container-404 {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 100px 200px 100px 200px;
+  padding: 43px 50px 43px 50px;
+  background-color: #ffffff;
+}
+
+.container-404-message {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.container-404-message i {
+  margin-left: 2vw;
+  margin-top: -1vh;
+  color: #EF626C;
+}
+
+.error-title {
+  font-size: 48px;
+  color: #EF626C;
+  text-align: center;
+}
+
+.container-404 div a{
+  font-size: 48px;
+  color: #6e72fc;
+}
+
+.redirect-container {
+  margin-top: 5vh;
+}
+
+.custom-svg-error-1 {
+  width: 100%;
+  margin: -5px 0 -5px 0;
+  overflow: hidden;
+  line-height: 0;
+  background-color: #d5eafc;
+}
+
+.custom-svg-error-1 svg {
+  position: relative;
+  display: block;
+  width: calc(103% + 1.3px);
+  height: 100px;
+}
+
+.custom-svg-error-1 .shape-fill {
+  fill: #6e72fc;
+}
+
+.custom-svg-f-1 {
+  background-color: #ffffff !important;
+}
+
+.container-404 svg {
+  top: -5vh;
+  position: absolute;
+  opacity: 0.2;
+}
+
+.redirect-container {
+  padding: 3vh 2vw 2vh 2vw;
+}

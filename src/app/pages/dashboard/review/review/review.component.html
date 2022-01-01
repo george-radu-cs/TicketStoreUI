@@ -1,0 +1,17 @@
+<div *ngIf="review" class="review-container">
+  <div class="review-user">
+    <div *ngIf="review.user" class="review-user-name">{{review.user.firstName}} {{review.user.lastName}}</div>
+    <div>{{formatDate(review.date)}}</div>
+  </div>
+  <div class="review-content">
+    <div class="review-title">{{review.title}}</div>
+    <div class="rating-container">
+      <fa-icon *ngFor="let i of [].constructor(getNumberOfFilledStars())" [icon]="faStar"
+               class="rating-star rating-star-filled"></fa-icon>
+      <fa-icon *ngIf="showHalfStar()" [icon]="faStarHalfAlt" class="rating-star"></fa-icon>
+      <fa-icon *ngFor="let i of [].constructor(getNumberOfEmptyStars())" [icon]="faStar"
+               class="rating-star rating-star-empty"></fa-icon>
+    </div>
+    <div>{{review.message}}</div>
+  </div>
+</div>

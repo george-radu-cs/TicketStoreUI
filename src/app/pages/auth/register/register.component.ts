@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {AuthService} from 'src/app/services/auth.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {emailRegex, nameRegex, phoneRegex} from '../../../shared/utils/validators';
 
 @Component({
   selector: 'app-register',
@@ -27,23 +28,23 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(21),
-        Validators.pattern('^[a-zA-Z]+( [a-zA-Z]+)*$'),
+        Validators.pattern(nameRegex),
       ]],
       lastName: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(21),
-        Validators.pattern('^[a-zA-Z]+( [a-zA-Z]+)*$'),
+        Validators.pattern(nameRegex),
       ]],
       email: ['', [
         Validators.required,
         Validators.email,
-        Validators.pattern('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'),
+        Validators.pattern(emailRegex),
       ]],
       phonePrefix: ['', [Validators.required]],
       phoneNumber: ['', [
         Validators.required,
-        Validators.pattern('^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$')
+        Validators.pattern(phoneRegex)
       ]],
       age: ['', [
         Validators.required,

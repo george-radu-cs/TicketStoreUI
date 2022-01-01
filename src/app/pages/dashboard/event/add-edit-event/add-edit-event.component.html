@@ -1,0 +1,269 @@
+<div class="container">
+  <h1 class="title">{{title}}</h1>
+
+  <form [formGroup]="eventForm" class="form-container">
+    <div class="form-row">
+      <div class="form">
+        <h2>Event details</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Short Name</mat-label>
+          <input matInput placeholder="Short Name" formControlName="shortName"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Description" formControlName="description"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Event date range</mat-label>
+          <mat-date-range-input [formGroup]="eventForm" [rangePicker]="picker">
+            <input matStartDate formControlName="startDate" placeholder="Start date">
+            <input matEndDate formControlName="endDate" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          <mat-error *ngIf="eventForm.controls['startDate'].hasError('matStartDateInvalid')">Invalid start date
+          </mat-error>
+          <mat-error *ngIf="eventForm.controls['endDate'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="Category" formControlName="category"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Genre</mat-label>
+          <input matInput placeholder="Genre" formControlName="genre"/>
+        </mat-form-field>
+      </div>
+
+      <div formGroupName="location" class="form">
+        <h2>Event Location</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Building Name</mat-label>
+          <input matInput placeholder="Building name" formControlName="buildingName"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address Full Name</mat-label>
+          <input matInput placeholder="Address full name" formControlName="addressFullName"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Locality</mat-label>
+          <input matInput placeholder="Locality" formControlName="locality"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="State" formControlName="state"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>State Code</mat-label>
+          <input matInput placeholder="State code" formControlName="stateCode"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput placeholder="Country" formControlName="country"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Country Code</mat-label>
+          <input matInput placeholder="Country code" formControlName="countryCode"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput placeholder="Postal code" formControlName="postalCode"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Latitude</mat-label>
+          <input matInput placeholder="Latitude" formControlName="latitude"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Longitude</mat-label>
+          <input matInput placeholder="Longitude" formControlName="longitude"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Geocode Accuracy</mat-label>
+          <mat-select formControlName="geocodeAccuracy">
+            <mat-option>Select geocode accuracy</mat-option>
+            <mat-option *ngFor="let geocodeAccuracy of geocodeAccuracies" [value]="geocodeAccuracy.value">
+              {{geocodeAccuracy.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div formGroupName="ticketTypes" class="form">
+        <h2>Ticket Types</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The Number for standard tickets</mat-label>
+          <input matInput placeholder="Number standard tickets" formControlName="numberStandardTickets"/>
+          <div *ngIf="!isControlValid('numberStandardTickets','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('numberStandardTickets', 'ticketTypes').errors?.['min']">
+              The minimum value accepted is 1.
+            </mat-error>
+            <mat-error *ngIf="getFormControl('numberStandardTickets', 'ticketTypes').errors?.['pattern']">
+              The number must be a positive integer.
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The price for a standard ticket</mat-label>
+          <input matInput placeholder="Price standard ticket" formControlName="priceStandardTicket"/>
+          <div *ngIf="!isControlValid('priceStandardTicket','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('priceStandardTicket', 'ticketTypes').errors?.['pattern']">
+              The price is invalid. Valid models are: 10, 10.9, 10.99
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The Number for VIP tickets</mat-label>
+          <input matInput placeholder="Number VIP tickets" formControlName="numberVipTickets"/>
+          <div *ngIf="!isControlValid('numberVipTickets','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('numberVipTickets', 'ticketTypes').errors?.['min']">
+              The minimum value accepted is 0.
+            </mat-error>
+            <mat-error *ngIf="getFormControl('numberVipTickets', 'ticketTypes').errors?.['pattern']">
+              The number must be a positive integer.
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The price for a VIP ticket</mat-label>
+          <input matInput placeholder="Price VIP ticket" formControlName="priceVipTicket"/>
+          <div *ngIf="!isControlValid('priceVipTicket','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('priceVipTicket', 'ticketTypes').errors?.['pattern']">
+              The price is invalid. Valid models are: 10, 10.9, 10.99
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The price for a child ticket</mat-label>
+          <input matInput placeholder="Price child ticket" formControlName="priceChildTicket"/>
+          <div *ngIf="!isControlValid('priceChildTicket','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('priceChildTicket', 'ticketTypes').errors?.['pattern']">
+              The price is invalid. Valid models are: 10, 10.9, 10.99
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>The price for a student ticket</mat-label>
+          <input matInput placeholder="Price student ticket" formControlName="priceStudentTicket"/>
+          <div *ngIf="!isControlValid('priceStudentTicket','ticketTypes')" class="alert alert-danger">
+            <mat-error *ngIf="getFormControl('priceStudentTicket', 'ticketTypes').errors?.['pattern']">
+              The price is invalid. Valid models are: 10, 10.9, 10.99
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Currency</mat-label>
+          <mat-select formControlName="priceCurrency">
+            <mat-option>Select currency</mat-option>
+            <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+              {{currency.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div formArrayName="guests" class="guests-container">
+        <div class="guest-title-container">
+          <h2>Event guests</h2>
+          <button (click)="addGuest()">
+            <mat-icon class="add-btn">add</mat-icon>
+          </button>
+        </div>
+
+        <div class="guests-form-container">
+          <ng-container *ngFor="let guestForm of guests.controls; let i = index">
+            <div [formGroupName]="i" class="guest-form-container">
+              <div class="guest-title-container">
+                <div class="guest-title">Guest {{i + 1}}</div>
+                <mat-icon class="delete-btn" (click)="removeGuest(i)">
+                  delete
+                </mat-icon>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="First name" formControlName="firstName"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Last name" formControlName="lastName"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Scene Name</mat-label>
+                  <input matInput placeholder="Scene name" formControlName="sceneName"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Description</mat-label>
+                  <input matInput placeholder="Description" formControlName="description"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Category</mat-label>
+                  <input matInput placeholder="Category" formControlName="category"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Genre</mat-label>
+                  <input matInput placeholder="Genre" formControlName="genre"/>
+                </mat-form-field>
+              </div>
+
+              <div class="guest-form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Age</mat-label>
+                  <input matInput placeholder="Age" formControlName="age"/>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button mat-raised-button class="save-button" (click)="!data.event ? addEvent() : editEvent()">
+    Save
+  </button>
+</div>

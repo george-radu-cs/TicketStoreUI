@@ -1,0 +1,13 @@
+.error-dialog-container {
+  background-color: #C70039;
+  color: #fafafe;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 100%;
+  padding: 0 1vw 0 1vw;
+}

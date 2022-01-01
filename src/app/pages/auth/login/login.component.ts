@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
         },
         error: (_: HttpErrorResponse) => this.error = 'Wrong email or password!',
         complete: () => {
-          this.router.navigate(['/dashboard']);
+          this.authService.loginSuccessfully(); // login successfully
+          this.router.navigate(['/dashboard']); // redirect
         },
       });
     }

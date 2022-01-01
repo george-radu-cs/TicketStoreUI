@@ -7,6 +7,7 @@ export interface Ticket {
   auxiliaryId: string;
   ticketType: string;
   price: string;
+  priceCurrency: string;
   buyer: User;
   event: Event
 }

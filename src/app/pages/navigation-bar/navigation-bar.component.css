@@ -5,12 +5,16 @@
   justify-content: space-between;
   width: 90vw;
   background-color: #6e72fc;
-  padding: 1.5vh 5vw 1.5vh 5vw;
+  padding: 3vh 5vw 3vh 5vw;
   color: #ffffff;
 }
 
 .navbar-container > h1 {
   margin: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
 }
 
 nav {
@@ -23,7 +27,7 @@ nav {
 
 a {
   color: white;
-  font-size: 1.3rem;
+  font-size: 2rem;
   padding: 1vh 1vw;
 }
 
@@ -51,6 +55,7 @@ a:active {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  font-size: 1.5rem;
 }
 
 .btn-logout:hover {

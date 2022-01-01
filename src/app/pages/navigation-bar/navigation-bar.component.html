@@ -5,7 +5,7 @@
       <a routerLink="{{menu.link}}" routerLinkActive="active">{{menu.label}}</a>
     </div>
   </nav>
-  <div>
+  <div *ngIf="menus.length !== 0">
     <button class="btn-logout" (click)="logout()">
       Log Out
     </button>
