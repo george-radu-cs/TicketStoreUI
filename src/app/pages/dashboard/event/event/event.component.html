@@ -1,173 +1,188 @@
-<div *ngIf="event" class="event-container">
+<div class="event-container">
   <h1>Event details</h1>
 
-  <div class="value-container">
-    <div class="label-name">Event name:</div>
-    <div class="value-name">{{event.name}}</div>
+  <div *ngIf="!event">
+    <mat-spinner></mat-spinner>
   </div>
 
-  <div class="value-container">
-    <div class="label-name">Short name:</div>
-    <div class="value-name">{{event.shortName}}</div>
-  </div>
-
-  <div class="value-container">
-    <div class="label-name">Description:</div>
-    <div class="value-name">{{event.description}}</div>
-  </div>
-
-  <div class="value-container">
-    <div class="label-name">Start Date:</div>
-    <div class="value-name">{{formatDate(event.startDate)}}</div>
-  </div>
-
-  <div class="value-container">
-    <div class="label-name">End Date:</div>
-    <div class="value-name">{{formatDate(event.endDate)}}</div>
-  </div>
-
-  <div class="value-container">
-    <div class="label-name">Category:</div>
-    <div class="value-name">{{event.category}}</div>
-  </div>
-
-  <div class="value-container">
-    <div class="label-name">Genre:</div>
-    <div class="value-name">{{event.genre}}</div>
-  </div>
-
-  <div class="event-subsection-container" *ngIf="event.location">
-    <h2>Event's location</h2>
-
+  <div *ngIf="event">
     <div class="value-container">
-      <div class="label-name">Building Name:</div>
-      <div class="value-name">{{event.location.buildingName}}</div>
+      <div class="label-name">Event name:</div>
+      <div class="value-name">{{event.name}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">Address Full Name:</div>
-      <div class="value-name">{{event.location.addressFullName}}</div>
+      <div class="label-name">Short name:</div>
+      <div class="value-name">{{event.shortName}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">Locality:</div>
-      <div class="value-name">{{event.location.locality}}</div>
+      <div class="label-name">Description:</div>
+      <div class="value-name">{{event.description}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">State:</div>
-      <div class="value-name">{{event.location.state}}</div>
+      <div class="label-name">Start Date:</div>
+      <div class="value-name">{{formatDate(event.startDate)}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">Country:</div>
-      <div class="value-name">{{event.location.country}}</div>
+      <div class="label-name">End Date:</div>
+      <div class="value-name">{{formatDate(event.endDate)}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">Postal Code:</div>
-      <div class="value-name">{{event.location.postalCode}}</div>
+      <div class="label-name">Category:</div>
+      <div class="value-name">{{event.category}}</div>
     </div>
 
     <div class="value-container">
-      <div class="label-name">Latitude:</div>
-      <div class="value-name">{{event.location.latitude}}</div>
+      <div class="label-name">Genre:</div>
+      <div class="value-name">{{event.genre}}</div>
     </div>
 
-    <div class="value-container">
-      <div class="label-name">Longitude:</div>
-      <div class="value-name">{{event.location.longitude}}</div>
-    </div>
-  </div>
+    <div class="event-subsection-container" *ngIf="event.location">
+      <h2>Event's location</h2>
 
-  <div class="event-subsection-container" *ngIf="event.organizer">
-    <h2>Organizer Info</h2>
-
-    <div class="value-container">
-      <div class="label-name">First name:</div>
-      <div class="value-name">{{event.organizer.firstName}}</div>
-    </div>
-
-    <div class="value-container">
-      <div class="label-name">Last name:</div>
-      <div class="value-name">{{event.organizer.lastName}}</div>
-    </div>
-
-    <div class="value-container">
-      <div class="label-name">Phone Number:</div>
-      <div class="value-name">{{event.organizer.phoneNumber}}</div>
-    </div>
-  </div>
-
-  <div class="event-subsection-container" *ngIf="event.ticketTypes">
-    <h2>Ticket types sold</h2>
-
-    <div class="value-container">
-      <div class="label-name">Number standard tickets:</div>
-      <div class="value-name">{{event.ticketTypes.numberStandardTickets}}</div>
-    </div>
-
-    <div class="value-container">
-      <div class="label-name">Price of a standard ticket:</div>
-      <div class="value-name">{{event.ticketTypes.priceStandardTicket}} {{event.ticketTypes.priceCurrency}}</div>
-    </div>
-
-    <div class="value-container" *ngIf="event.ticketTypes.priceChildTicket !== ''">
-      <div class="label-name">Price for a child ticket:</div>
-      <div class="value-name">{{event.ticketTypes.priceChildTicket}} {{event.ticketTypes.priceCurrency}}</div>
-    </div>
-
-    <div class="value-container" *ngIf="event.ticketTypes.priceStudentTicket !== ''">
-      <div class="label-name">Price for a student ticket:</div>
-      <div class="value-name">{{event.ticketTypes.priceStudentTicket}} {{event.ticketTypes.priceCurrency}}</div>
-    </div>
-
-    <div *ngIf="event.ticketTypes.numberVipTickets !== 0">
       <div class="value-container">
-        <div class="label-name">Number VIP tickets:</div>
-        <div class="value-name">{{event.ticketTypes.numberVipTickets}}</div>
+        <div class="label-name">Building Name:</div>
+        <div class="value-name">{{event.location.buildingName}}</div>
       </div>
 
       <div class="value-container">
-        <div class="label-name">Price of a VIP ticket:</div>
-        <div class="value-name">{{event.ticketTypes.priceVipTicket}} {{event.ticketTypes.priceCurrency}}</div>
+        <div class="label-name">Address Full Name:</div>
+        <div class="value-name">{{event.location.addressFullName}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Locality:</div>
+        <div class="value-name">{{event.location.locality}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">State:</div>
+        <div class="value-name">{{event.location.state}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Country:</div>
+        <div class="value-name">{{event.location.country}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Postal Code:</div>
+        <div class="value-name">{{event.location.postalCode}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Latitude:</div>
+        <div class="value-name">{{event.location.latitude}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Longitude:</div>
+        <div class="value-name">{{event.location.longitude}}</div>
       </div>
     </div>
 
-    <div class="value-container">
-      <div class="label-name">Total tickets sold:</div>
-      <div class="value-name">{{getEventTicketsSold()}}</div>
-    </div>
-  </div>
+    <div class="event-subsection-container" *ngIf="event.organizer">
+      <h2>Organizer Info</h2>
 
-  <div *ngIf="event.guests && event.guests.length !== 0;else elseBlockGuests">
-    <h2>List of guests</h2>
-    <div class="event-guests-container">
-      <div *ngFor="let guest of event.guests; let i = index">
-        <app-event-guest
-          [guest]="guest"
-          [number]="i+1"
-        ></app-event-guest>
+      <div class="value-container">
+        <div class="label-name">First name:</div>
+        <div class="value-name">{{event.organizer.firstName}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Last name:</div>
+        <div class="value-name">{{event.organizer.lastName}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Phone Number:</div>
+        <div class="value-name">{{event.organizer.phoneNumber}}</div>
       </div>
     </div>
-  </div>
-  <ng-template #elseBlockGuests>
-    <h3>This event has no guests.</h3>
-  </ng-template>
 
-  <h2>List of reviews</h2>
-  <div *ngIf="eventReviews && eventReviews.length !== 0;else elseBlockReviews">
-    <div class="event-reviews-container">
-      <div *ngFor="let review of eventReviews; let i = index">
-        <app-review
-          [review]="review"
-        ></app-review>
+    <div class="event-subsection-container" *ngIf="event.ticketTypes">
+      <h2>Ticket types sold</h2>
+
+      <div class="value-container">
+        <div class="label-name">Number standard tickets:</div>
+        <div class="value-name">{{event.ticketTypes.numberStandardTickets}}</div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Price of a standard ticket:</div>
+        <div class="value-name">{{event.ticketTypes.priceStandardTicket}} {{event.ticketTypes.priceCurrency}}</div>
+      </div>
+
+      <div class="value-container" *ngIf="event.ticketTypes.priceChildTicket !== ''">
+        <div class="label-name">Price for a child ticket:</div>
+        <div class="value-name">{{event.ticketTypes.priceChildTicket}} {{event.ticketTypes.priceCurrency}}</div>
+      </div>
+
+      <div class="value-container" *ngIf="event.ticketTypes.priceStudentTicket !== ''">
+        <div class="label-name">Price for a student ticket:</div>
+        <div class="value-name">{{event.ticketTypes.priceStudentTicket}} {{event.ticketTypes.priceCurrency}}</div>
+      </div>
+
+      <div *ngIf="event.ticketTypes.numberVipTickets !== 0">
+        <div class="value-container">
+          <div class="label-name">Number VIP tickets:</div>
+          <div class="value-name">{{event.ticketTypes.numberVipTickets}}</div>
+        </div>
+
+        <div class="value-container">
+          <div class="label-name">Price of a VIP ticket:</div>
+          <div class="value-name">{{event.ticketTypes.priceVipTicket}} {{event.ticketTypes.priceCurrency}}</div>
+        </div>
+      </div>
+
+      <div class="value-container">
+        <div class="label-name">Total tickets sold:</div>
+        <div class="value-name">{{getEventTicketsSold()}}</div>
       </div>
     </div>
+
+    <div *ngIf="event.guests && event.guests.length !== 0;else elseBlockGuests">
+      <h2>List of guests</h2>
+      <div class="event-guests-container">
+        <div *ngFor="let guest of event.guests; let i = index">
+          <app-event-guest
+            [guest]="guest"
+            [number]="i+1"
+          ></app-event-guest>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlockGuests>
+      <h3>This event has no guests.</h3>
+    </ng-template>
+
+    <div *ngIf="id !== '' && user && user.id !== ''" class="user-review-container">
+      <h2>Your review</h2>
+      <app-add-edit-review
+        [userId]="user.id"
+        [eventId]="id"
+        (onReviewChanged)="refreshReviews($event)">
+      </app-add-edit-review>
+    </div>
+
+    <h2>List of reviews</h2>
+    <div *ngIf="eventReviews && eventReviews.length !== 0;else elseBlockReviews">
+      <div class="event-reviews-container">
+        <div *ngFor="let review of eventReviews; let i = index">
+          <app-review
+            [review]="review"
+            [index]="i"
+          ></app-review>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlockReviews>
+      <h3>This event has no reviews yet.</h3>
+    </ng-template>
+
   </div>
-  <ng-template #elseBlockReviews>
-    <h3>This event has no reviews yet.</h3>
-  </ng-template>
-
-
 </div>

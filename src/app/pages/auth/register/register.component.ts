@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from 'src/app/services/auth.service';
-import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {emailRegex, nameRegex, phoneRegex} from '../../../shared/utils/validators';
 
@@ -108,7 +107,7 @@ export class RegisterComponent implements OnInit {
         next: (response: any) => {
           console.log(response);
         },
-        error: (error: HttpErrorResponse) => console.error(error.error),
+        error: (error) => console.error(error),
         complete: () => {
           this.router.navigate(['login']);
         },

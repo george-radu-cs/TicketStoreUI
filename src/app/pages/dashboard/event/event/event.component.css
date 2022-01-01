@@ -1,7 +1,7 @@
 .event-container {
   background-color: #ffffff;
   margin: 5vh 5vw;
-  padding: 5vh 3vw
+  padding: 5vh 7vw
 }
 
 .event-subsection-container {
@@ -50,4 +50,8 @@ h3 {
 }
 
 .value-name {
+}
+
+.user-review-container {
+  margin-bottom: 2vh;
 }

@@ -1,0 +1,72 @@
+<div class="add-edit-review-container">
+  <div *ngIf="reviewData && reviewData.event && reviewData.event.name">
+    <h1>Review for the event: {{reviewData.event.name | titlecase}}</h1>
+  </div>
+
+  <div *ngIf="isCreatingOrEditing;then thenBlockShowForm else elseBlockHideForm"></div>
+  <ng-template #thenBlockShowForm>
+    <div class="add-edit-title">
+      <div>{{title}}</div>
+      <button (click)="toggleAddOrEditForm()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="reviewForm" class="form-container">
+      <mat-form-field appearance="standard">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title"/>
+      </mat-form-field>
+
+      <div class="row-flex-container">
+        <div>Rating</div>
+        <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
+      </div>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Message</mat-label>
+        <input matInput placeholder="Message" formControlName="message"/>
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button class="save-button" (click)="!reviewData ? addReview() : editReview()">
+      Save
+    </button>
+  </ng-template>
+
+  <ng-template #elseBlockHideForm>
+    <div *ngIf="reviewData;then thenBlockReview else elseBlockReview"></div>
+    <ng-template #thenBlockReview>
+      <div class="add-edit-title">
+        <app-review [review]="reviewData" [index]="-1"></app-review>
+        <div class="multiple-buttons-container">
+          <div class="button-column">
+            <div>Edit</div>
+            <button (click)="toggleAddOrEditForm()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div class="button-column">
+            <div>Remove</div>
+            <button (click)="removeReview()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #elseBlockReview>
+      <div class="add-edit-title">
+        <div>You didn't write a review for this event.</div>
+        <div class="button-column">
+          <div>Add</div>
+          <button (click)="toggleAddOrEditForm()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+
+  <div (click)="emitNewMessage('')"></div>
+</div>
