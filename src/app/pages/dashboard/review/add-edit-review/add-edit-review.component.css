@@ -1,0 +1,61 @@
+.add-edit-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.multiple-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 7vw;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-column > div {
+  margin-bottom: .5vh;
+  margin-right: .5vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+
+.row-flex-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.row-flex-container > div {
+  margin-right: 1vw;
+}
+
+.save-button {
+  padding: .5vh 0;
+  font-size: 1.2rem;
+  background-color: #d5eafc;
+}

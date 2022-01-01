@@ -6,7 +6,7 @@ export interface Review {
   eventId: string;
   title: string;
   message: string;
-  rating: string;
+  rating: number;
   date: string;
   user: User;
   event: Event;

@@ -1,45 +1,38 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Review} from '../../../../interfaces/review';
-import {faStar, faStarHalfAlt} from '@fortawesome/free-solid-svg-icons';
 import * as dayjs from 'dayjs';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
-export class ReviewComponent implements OnInit {
+export class ReviewComponent implements OnInit, OnChanges {
   @Input() review: Review | null = null;
-  public faStar = faStar;
-  public faStarHalfAlt = faStarHalfAlt;
-  private maxRating: number = 5;
+  @Input() index: number = 0;
 
-  constructor() {
+  public form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      rating: [{value: this.review ? Number(this.review.rating) : 0, disabled: true}]
+    });
   }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['review'] !== undefined) {
+      this.form = this.formBuilder.group({
+        rating: [{value: this.review ? Number(this.review.rating) : 0, disabled: true}]
+      });
+    }
+  }
+
   public formatDate(date: string): string {
-    return dayjs(date).format('DD-MMM-YYYY').toString();
+    return dayjs(date.toLocaleLowerCase()).format('DD-MMM-YYYY').toString();
   }
 
-  public getNumberOfFilledStars(): number {
-    if (this.review) {
-      return Math.floor(Number(this.review.rating));
-    }
-    return 0;
-  }
-
-  public getNumberOfEmptyStars(): number {
-    if (this.review) {
-      return this.maxRating - Math.ceil(Number(this.review.rating));
-    }
-
-    return this.maxRating;
-  }
-
-  public showHalfStar(): boolean {
-    return this.getNumberOfEmptyStars() + this.getNumberOfFilledStars() !== this.maxRating;
-  }
 }

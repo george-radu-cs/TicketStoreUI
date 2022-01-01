@@ -4,7 +4,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {EventService} from '../../../../services/event.service';
 import {selectOption} from '../../../../interfaces/select-option';
 import {Guest} from '../../../../interfaces/guest';
-import {HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../../../interfaces/user';
 import {DataService} from '../../../../services/data.service';
 import {positiveFloatRegex, nameRegex, positiveIntegerRegex} from '../../../../shared/utils/validators';
@@ -157,8 +156,8 @@ export class AddEditEventComponent implements OnInit {
         next: (result: any) => {
           this.dialogRef.close(true);
         },
-        error: (error: HttpErrorResponse) => {
-          console.error(error.error);
+        error: (error) => {
+          console.error(error);
         },
         complete: () => {
         }
@@ -172,8 +171,8 @@ export class AddEditEventComponent implements OnInit {
         next: (result: any) => {
           this.dialogRef.close(true);
         },
-        error: (error: HttpErrorResponse) => {
-          console.error(error.error);
+        error: (error) => {
+          console.error(error);
         },
         complete: () => {
         }
