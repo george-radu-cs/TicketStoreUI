@@ -30,15 +30,13 @@ The UI is made for an ADMIN user to simplify it, because all I want was to showc
 
 ## TODO
 
-- [ ] add pipes
-  - [x] pipe in template
-  - [ ] pipe class
 - [x] add routing (simple and complex)
 - [x] set up redirects
 - [x] create 3 services, show data received from services in components
-- [ ] 2 reactive forms (auth not considered)
+- [x] reactive forms (auth not considered)
   - [x] event form
-  - [ ] review form
+  - [x] review form
+  - [x] ticket form
 - [x] show errors from api on forms
 - [x] communication between components
 - [x] add auth
@@ -46,6 +44,7 @@ The UI is made for an ADMIN user to simplify it, because all I want was to showc
   - [x] add login
   - [x] add logout
 - [x] implement guards
+- [x] pipe in template
 - [x] add angular directives
 - [x] add event service
 - [x] add ticket service
@@ -59,13 +58,19 @@ The UI is made for an ADMIN user to simplify it, because all I want was to showc
   - [x] events page
   - [x] event page
   - [x] create/edit component
-  - [ ] my review for the event
-  - [ ] my tickets for the event
-- [ ] reviews
-  - [ ] reviews page
-  - [ ] review component
-  - [ ] create/edit component
-- [ ] tickets 
-  - [ ] tickets page
-  - [ ] ticket component
-  - [ ] create/edit component
+  - [x] my review for the event
+  - [x] my tickets for the event
+- [x] reviews
+  - [x] reviews page
+  - [x] review component
+  - [x] create/edit component
+- [x] tickets 
+  - [x] tickets page
+  - [x] ticket component
+  - [x] create/edit component
+  - [x] my tickets (user's bought tickets) page
+  - [x] tickets sold by an organisation page
+- [ ] update-guards
+- [ ] set guards for roles
+- [ ] add filter for events
+- [ ] create user specific pages

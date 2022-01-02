@@ -1,0 +1,40 @@
+<div class="container">
+  <div *ngIf="!ticket">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="ticket">
+    <div class="add-edit-title">
+      <div *ngIf="isEditing;then thenBlockEditing else elseBlockPresentation"></div>
+      <ng-template #thenBlockEditing>
+        <app-add-edit-ticket
+          [ticket]="ticket"
+          [userId]="ticket.userId"
+          [eventId]="ticket.eventId"
+          (onTicketChanged)="emitNewMessage($event)"
+        ></app-add-edit-ticket>
+        <button (click)="toggleAddOrEditForm()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-template>
+      <ng-template #elseBlockPresentation>
+        <app-ticket
+          [ticket]="ticket"
+        ></app-ticket>
+        <div class="multiple-buttons-container">
+          <div class="button-column">
+            <div>Edit</div>
+            <button (click)="toggleAddOrEditForm()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div class="button-column">
+            <div>Remove</div>
+            <button (click)="removeTicket()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

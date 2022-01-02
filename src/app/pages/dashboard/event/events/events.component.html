@@ -75,4 +75,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+  <div *ngIf="!fetchedEvents">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>

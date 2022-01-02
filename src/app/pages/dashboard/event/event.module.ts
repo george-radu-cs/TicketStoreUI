@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {TicketModule} from '../ticket/ticket.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDatepickerModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    TicketModule,
   ]
 })
 export class EventModule {

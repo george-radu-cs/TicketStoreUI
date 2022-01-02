@@ -15,6 +15,7 @@ import {AddEditReviewComponent} from '../add-edit-review/add-edit-review.compone
 export class MyReviewsComponent implements OnInit {
   public user: User | undefined;
   public reviews: Review[] = [];
+  public fetchedReviews: boolean = false;
   public displayedColumns = ['event-name', 'title', 'rating', 'message', 'date', 'view', 'delete'];
 
   constructor(
@@ -65,6 +66,7 @@ export class MyReviewsComponent implements OnInit {
           this.reviews = [];
         },
         complete: () => {
+          this.fetchedReviews = true;
         }
       });
     }

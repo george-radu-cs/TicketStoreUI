@@ -97,7 +97,7 @@ export class EventComponent implements OnInit {
 
   public getCurrentUser(): void {
     this.dataService.currentUser.subscribe(u => {
-      this.user = u;
+      this.user = u; // save the user data
     });
   }
 }

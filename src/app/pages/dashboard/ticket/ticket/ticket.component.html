@@ -1,0 +1,7 @@
+<div *ngIf="ticket">
+  <div class="container">
+    <div class="element">Type: {{ticket.ticketType | titlecase}}</div>
+    <div class="element">Price: {{ticket.price}} {{ticket.priceCurrency}}</div>
+    <div class="element">Bought on: {{formatDate(ticket.boughtTime)}}</div>
+  </div>
+</div>
