@@ -44,7 +44,6 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
     }
     if (changes['ticket'] !== undefined) {
       this.title = 'Edit ticket';
-      console.log(changes)
       this.setEditValues();
     }
   }
@@ -121,7 +120,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
         next: (response: any) => {
         },
         error: (error) => {
-          console.error(error);
+
         },
         complete: () => {
           this.emitNewMessage('bought-ticket');
@@ -136,7 +135,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
         next: (response: any) => {
         },
         error: (error) => {
-          console.error(error);
+
         },
         complete: () => {
           this.emitNewMessage('edited-ticket');
@@ -150,7 +149,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
       next: (event: Event) => {
         this.eventTicketTypes = event.ticketTypes;
       },
-      error: (error) => console.error(error),
+      error: (error) => {},
       complete: () => {
         this.createNewTicketTypes();
         this.syncInputs();

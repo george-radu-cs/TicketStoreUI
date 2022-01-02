@@ -18,8 +18,8 @@ export class IsOrganizerGuard implements CanActivate {
     }
     // decode the claims from the jwt token
     const decoderJWT = JSON.parse(window.atob(token.split('.')[1]));
-    if (decoderJWT.role !== 'Organizer') {
-      // TODO redirect
+    if (decoderJWT.role !== 'Organizer' && decoderJWT.role !== 'Admin') {
+      this.router.navigate(['404']);
       return false;
     }
 

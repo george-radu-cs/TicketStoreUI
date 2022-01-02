@@ -34,10 +34,9 @@ export class TicketPresentationEditComponent implements OnInit {
         next: (response: any) => {
         },
         error: (error) => {
-          console.error(error);
         },
         complete: () => {
-          this.emitNewMessage('deleted-ticket')
+          this.emitNewMessage('deleted-ticket');
         }
       });
     }

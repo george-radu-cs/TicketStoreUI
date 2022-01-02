@@ -157,7 +157,6 @@ export class AddEditEventComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error: (error) => {
-          console.error(error);
         },
         complete: () => {
         }
@@ -172,7 +171,6 @@ export class AddEditEventComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error: (error) => {
-          console.error(error);
         },
         complete: () => {
         }

@@ -62,8 +62,8 @@ export class MyReviewsComponent implements OnInit {
           this.reviews = result;
         },
         error: (error) => {
-          console.error(error);
           this.reviews = [];
+          this.fetchedReviews = true;
         },
         complete: () => {
           this.fetchedReviews = true;
@@ -79,9 +79,8 @@ export class MyReviewsComponent implements OnInit {
   public deleteReview(review: Review): void {
     this.reviewService.deleteReview(review.userId, review.eventId).subscribe({
       next: (response: any) => {
-        console.log(response);
       },
-      error: (error) => console.error(error),
+      error: (error) => {},
       complete: () => {
         this.getMyReviews();
       }

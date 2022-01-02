@@ -9,37 +9,39 @@ import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../../material/material.module';
 import {NgxStarRatingModule} from 'ngx-star-rating';
-import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import {MyReviewsComponent} from './my-reviews/my-reviews.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {EventsReviewsComponent} from './events-reviews/events-reviews.component';
 
 
 @NgModule({
   declarations: [
     ReviewComponent,
     AddEditReviewComponent,
-    MyReviewsComponent
+    MyReviewsComponent,
+    EventsReviewsComponent
   ],
   exports: [
     ReviewComponent,
     ReviewComponent,
     AddEditReviewComponent
   ],
-    imports: [
-        CommonModule,
-        ReviewRoutingModule,
-        FontAwesomeTestingModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        NgxStarRatingModule,
-        MatExpansionModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    CommonModule,
+    ReviewRoutingModule,
+    FontAwesomeTestingModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    NgxStarRatingModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule
+  ],
   providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: null}
   ]
 })
 export class ReviewModule {

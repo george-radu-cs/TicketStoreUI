@@ -67,7 +67,8 @@ export class EventComponent implements OnInit {
       next: (event: Event) => {
         this.event = event;
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+      },
       complete: () => {
       },
     });
@@ -78,7 +79,9 @@ export class EventComponent implements OnInit {
       next: (reviews: Review[]) => {
         this.eventReviews = reviews;
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+        this.eventReviews = [];
+      },
       complete: () => {
       },
     });
@@ -89,7 +92,8 @@ export class EventComponent implements OnInit {
       next: (tickets: Ticket[]) => {
         this.eventTickets = tickets;
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+      },
       complete: () => {
       },
     });

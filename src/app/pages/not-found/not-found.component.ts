@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
 
 @Component({
   selector: 'app-not-found',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent implements OnInit {
+  public faExclamationTriangle = faExclamationTriangle;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
