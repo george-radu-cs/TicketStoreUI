@@ -16,6 +16,7 @@ import {AddEditEventComponent} from '../add-edit-event/add-edit-event.component'
 export class EventsComponent implements OnInit {
   public user: User | undefined;
   public events: Event[] = [];
+  public fetchedEvents: boolean = false;
   public displayedColumns = ['id', 'name', 'category', 'genre', 'address', 'start-date', 'end-date', 'view', 'edit', 'delete'];
 
   constructor(
@@ -37,9 +38,11 @@ export class EventsComponent implements OnInit {
           this.events = result;
         },
         error: (error) => {
+          this.events = [];
           console.error(error);
         },
         complete: () => {
+          this.fetchedEvents = true;
         }
       }
     );

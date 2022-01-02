@@ -26,6 +26,14 @@ export class TicketService {
     return this.http.get<Ticket[]>(`${this.ticketUrl}/buyer-tickets/${userId}`, this.httpHeaders);
   }
 
+  public getBuyerTicketsForAnEvent(userId: string, eventId: string): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.ticketUrl}/buyer-tickets-for-event/${userId}&${eventId}`, this.httpHeaders);
+  }
+
+  public getTicketsSoldByAnOrganisation(userId: string): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.ticketUrl}/tickets-sold-by-org/${userId}`, this.httpHeaders);
+  }
+
   public getEventTickets(eventId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(`${this.ticketUrl}/event-tickets/${eventId}`, this.httpHeaders);
   }

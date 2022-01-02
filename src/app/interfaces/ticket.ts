@@ -8,6 +8,7 @@ export interface Ticket {
   ticketType: string;
   price: string;
   priceCurrency: string;
+  boughtTime: string;
   buyer: User;
   event: Event
 }

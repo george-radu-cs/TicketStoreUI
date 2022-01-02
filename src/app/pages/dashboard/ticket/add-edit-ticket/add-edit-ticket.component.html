@@ -1,0 +1,31 @@
+<div *ngIf="!(userId && eventId && ticketTypes.length !== 0)">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="container" *ngIf="userId && eventId && ticketTypes.length !== 0">
+  <div>{{title}}</div>
+
+  <form [formGroup]="ticketForm" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Ticket Type</mat-label>
+      <mat-select formControlName="ticketType">
+        <mat-option>Select ticket type</mat-option>
+        <mat-option *ngFor="let ticketType of ticketTypes" [value]="ticketType.value">
+          {{ticketType.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ticket price</mat-label>
+      <input matInput [readonly]="true" placeholder="Ticket price" formControlName="price"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price currency</mat-label>
+      <input matInput [readonly]="true" placeholder="Price currency" formControlName="priceCurrency"/>
+    </mat-form-field>
+  </form>
+
+  <button mat-flat-button class="save-button" (click)="!ticket ? addTicket() : editTicket()">
+    Save
+  </button>
+</div>

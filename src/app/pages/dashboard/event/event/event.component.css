@@ -4,12 +4,28 @@
   padding: 5vh 7vw
 }
 
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 49%;
+  min-width: 30vw;
+}
+
 .event-subsection-container {
   margin: 2vh 0;
 }
 
 .event-guests-container {
-  display:flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;

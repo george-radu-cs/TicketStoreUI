@@ -1,0 +1,7 @@
+<div class="tickets-container">
+  <h2>My Tickets</h2>
+  <app-tickets [tickets]="tickets"></app-tickets>
+  <div *ngIf="!fetchedTickets">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

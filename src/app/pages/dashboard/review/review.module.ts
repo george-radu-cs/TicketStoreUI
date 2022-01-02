@@ -12,6 +12,7 @@ import {NgxStarRatingModule} from 'ngx-star-rating';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -25,16 +26,17 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     ReviewComponent,
     AddEditReviewComponent
   ],
-  imports: [
-    CommonModule,
-    ReviewRoutingModule,
-    FontAwesomeTestingModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    NgxStarRatingModule,
-    MatExpansionModule
-  ],
+    imports: [
+        CommonModule,
+        ReviewRoutingModule,
+        FontAwesomeTestingModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        NgxStarRatingModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule
+    ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }

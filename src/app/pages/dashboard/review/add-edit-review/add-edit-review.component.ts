@@ -81,10 +81,8 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
   }
 
   public addReview(): void {
-    console.log(this.reviewForm.value);
     this.reviewService.createReview(this.reviewForm.value).subscribe({
       next: (response: any) => {
-        console.log(response);
         this.dialogRef.close(true);
       },
       error: (error) => console.error(error),
@@ -99,7 +97,6 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
   public editReview(): void {
     this.reviewService.updateReview(this.reviewForm.value).subscribe({
       next: (response: any) => {
-        console.log(response);
         this.dialogRef.close(true);
       },
       error: (error) => console.error(error),
@@ -115,7 +112,6 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
     const review = this.reviewForm.value;
     this.reviewService.deleteReview(review.userId, review.eventId).subscribe({
       next: (response: any) => {
-        console.log(response);
         this.dialogRef.close(true);
       },
       error: (error) => console.error(error),
