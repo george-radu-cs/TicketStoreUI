@@ -24,7 +24,8 @@ export class ErrorInterceptor implements HttpInterceptor {
           message: error && error.error ? error.error : '',
           status: error.status,
         };
-        if (error.status !== 404) { // suppress 404 errors
+        // suppress 404 errors & login errors
+        if (error.status !== 404 && !error.error.includes('Login failed')) {
           this.errorDialogService.openDialog(data);
         }
         return throwError(() => error);

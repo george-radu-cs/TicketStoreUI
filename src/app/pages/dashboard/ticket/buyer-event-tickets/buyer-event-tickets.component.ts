@@ -11,6 +11,7 @@ export class BuyerEventTicketsComponent implements OnInit, OnChanges {
   @Input() userId: string = '';
   @Input() eventId: string = '';
   public ticketsBought: Ticket[] = [];
+  public fetchedTickets: boolean = false;
 
   constructor(
     private ticketService: TicketService
@@ -38,10 +39,11 @@ export class BuyerEventTicketsComponent implements OnInit, OnChanges {
         this.ticketsBought = tickets;
       },
       error: (error) => {
-        console.error(error);
         this.ticketsBought = [];
+        this.fetchedTickets = true;
       },
       complete: () => {
+        this.fetchedTickets = true;
       }
     });
   }

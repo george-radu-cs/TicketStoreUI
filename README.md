@@ -70,7 +70,7 @@ The UI is made for an ADMIN user to simplify it, because all I want was to showc
   - [x] create/edit component
   - [x] my tickets (user's bought tickets) page
   - [x] tickets sold by an organisation page
-- [ ] update-guards
-- [ ] set guards for roles
+- [x] update-guards
+- [x] set guards for roles
 - [ ] add filter for events
 - [ ] create user specific pages

@@ -18,8 +18,8 @@ export class IsBuyerGuard implements CanActivate {
     }
     // decode the claims from the jwt token
     const decoderJWT = JSON.parse(window.atob(token.split('.')[1]));
-    if (decoderJWT.role !== 'Buyer') {
-      // TODO redirect
+    if (decoderJWT.role !== 'Buyer' && decoderJWT.role !== 'Admin') {
+      this.router.navigate(['404']);
       return false;
     }
 

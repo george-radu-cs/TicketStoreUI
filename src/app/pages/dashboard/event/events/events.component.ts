@@ -39,7 +39,7 @@ export class EventsComponent implements OnInit {
         },
         error: (error) => {
           this.events = [];
-          console.error(error);
+          this.fetchedEvents = true;
         },
         complete: () => {
           this.fetchedEvents = true;
@@ -61,7 +61,7 @@ export class EventsComponent implements OnInit {
     dialogConfig.data = data; // set the data
     const dialogRef = this.dialog.open(AddEditEventComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      if(result) { // if result is true the create or update was successfully
+      if (result) { // if result is true the create or update was successfully
         this.getEvents(); // so we fetch the events to have the updated data
       }
     });
@@ -86,9 +86,8 @@ export class EventsComponent implements OnInit {
   public deleteEvent(event: Event): void {
     this.eventService.deleteEvent(event.id).subscribe({
       next: (response: any) => {
-        console.log(response);
       },
-      error: (error) => console.error(error),
+      error: (error) => {},
       complete: () => {
         this.getEvents();
       }

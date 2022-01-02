@@ -6,20 +6,22 @@ import {Injectable} from '@angular/core';
 export class NavbarMenusService {
   private AdminMenus = [
     {link: 'dashboard/event-menu', label: 'Events'},
-    {link: 'dashboard/review-menu', label: 'Reviews'},
-    {link: 'dashboard/ticket-menu', label: 'Tickets'},
+    {link: 'dashboard/review-menu/my-reviews', label: 'My Reviews'},
+    {link: 'dashboard/review-menu/events-reviews', label: 'Events Reviews'},
+    {link: 'dashboard/ticket-menu/my-tickets', label: 'My Tickets'},
+    {link: 'dashboard/ticket-menu/tickets-sold', label: 'Tickets Sold'},
   ];
 
   private BuyerMenus = [
     {link: 'dashboard/event-menu', label: 'Events'},
-    {link: 'dashboard/review-menu', label: 'My Reviews'},
-    {link: 'dashboard/ticket-menu', label: 'My Tickets'},
+    {link: 'dashboard/review-menu/my-reviews', label: 'My Reviews'},
+    {link: 'dashboard/ticket-menu/my-tickets', label: 'My Tickets'},
   ];
 
   private OrganizerMenus = [
     {link: 'dashboard/event-menu', label: 'My Events'},
-    {link: 'dashboard/review-menu', label: 'Reviews'},
-    {link: 'dashboard/ticket-menu', label: 'Tickets'},
+    {link: 'dashboard/review-menu/events-reviews', label: 'Reviews'},
+    {link: 'dashboard/ticket-menu/tickets-sold', label: 'Tickets'},
   ];
 
 

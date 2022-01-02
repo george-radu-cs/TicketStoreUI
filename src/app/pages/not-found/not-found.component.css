@@ -11,7 +11,7 @@
 .container-404-message {
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -68,4 +68,10 @@
 
 .redirect-container {
   padding: 3vh 2vw 2vh 2vw;
+}
+
+fa-icon {
+  font-size: 5rem;
+  color: #C70039;
+  margin-left: 5vw;
 }

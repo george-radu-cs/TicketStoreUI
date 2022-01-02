@@ -73,7 +73,9 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
           this.title = 'Edit review'; // change the title to edit because we will have values in form
           this.reviewForm.patchValue(this.reviewData); // insert the review's data in the form
         },
-        error: (error) => console.error(error),
+        error: (error) => {
+          this.reviewData = null;
+        },
         complete: () => {
         }
       });
@@ -85,10 +87,11 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
       next: (response: any) => {
         this.dialogRef.close(true);
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+      },
       complete: () => {
-        this.toggleAddOrEditForm();
         this.emitNewMessage('added-review');
+        this.toggleAddOrEditForm();
         this.getUserReview();
       }
     });
@@ -99,10 +102,11 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
       next: (response: any) => {
         this.dialogRef.close(true);
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+      },
       complete: () => {
-        this.toggleAddOrEditForm();
         this.emitNewMessage('updated-review');
+        this.toggleAddOrEditForm();
         this.getUserReview();
       }
     });
@@ -114,7 +118,8 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
       next: (response: any) => {
         this.dialogRef.close(true);
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+      },
       complete: () => {
         this.emitNewMessage('deleted-review');
         this.getUserReview();

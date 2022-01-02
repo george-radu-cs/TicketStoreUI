@@ -105,11 +105,10 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) { // if the register form is valid make the call to the api
       this.authService.register(this.registerForm.value).subscribe({
         next: (response: any) => {
-          console.log(response);
         },
-        error: (error) => console.error(error),
+        error: (error) => {},
         complete: () => {
-          this.router.navigate(['login']);
+          this.router.navigate(['/auth/login']);
         },
       });
     } else { // if the register form is invalid then alert the user to complete the form

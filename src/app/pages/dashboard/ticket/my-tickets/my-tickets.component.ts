@@ -38,10 +38,10 @@ export class MyTicketsComponent implements OnInit {
       },
       error: (error) => {
         this.tickets = [];
-        console.error(error);
+        this.fetchedTickets = true;
       },
       complete: () => {
-        this.fetchedTickets =true;
+        this.fetchedTickets = true;
       }
     });
   }
