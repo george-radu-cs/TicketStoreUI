@@ -25,12 +25,12 @@
 
         <div class="value-container">
           <div class="label-name">Start Date:</div>
-          <div class="value-name">{{formatDate(event.startDate)}}</div>
+          <div class="value-name">{{event.startDate | date: 'dd MMM yyyy, hh:mm'}}</div>
         </div>
 
         <div class="value-container">
           <div class="label-name">End Date:</div>
-          <div class="value-name">{{formatDate(event.endDate)}}</div>
+          <div class="value-name">{{event.endDate | date: 'dd MMM yyyy, hh:mm'}}</div>
         </div>
 
         <div class="value-container">

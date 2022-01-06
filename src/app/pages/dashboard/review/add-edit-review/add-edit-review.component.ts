@@ -2,7 +2,7 @@ import {Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, Simpl
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ReviewService} from '../../../../services/review.service';
 import {Review} from '../../../../interfaces/review';
-import {positiveFloatRegex} from '../../../../shared/utils/validators';
+import {positiveIntegerRegex} from '../../../../shared/utils/validators';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
@@ -49,7 +49,7 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
       eventId: [this.eventId, [Validators.required]],
       title: ['', [Validators.required]],
       message: ['', [Validators.required]],
-      rating: [0, [Validators.required, Validators.min(0), Validators.max(5), Validators.pattern(positiveFloatRegex)]],
+      rating: [0, [Validators.required, Validators.min(0), Validators.max(5), Validators.pattern(positiveIntegerRegex)]],
     });
   }
 
@@ -83,33 +83,38 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
   }
 
   public addReview(): void {
-    this.reviewService.createReview(this.reviewForm.value).subscribe({
-      next: (response: any) => {
-        this.dialogRef.close(true);
-      },
-      error: (error) => {
-      },
-      complete: () => {
-        this.emitNewMessage('added-review');
-        this.toggleAddOrEditForm();
-        this.getUserReview();
-      }
-    });
+    console.log(this.reviewForm.value)
+    if (this.reviewForm.valid) {
+      this.reviewService.createReview(this.reviewForm.value).subscribe({
+        next: (response: any) => {
+          this.dialogRef.close(true);
+        },
+        error: (error) => {
+        },
+        complete: () => {
+          this.emitNewMessage('added-review');
+          this.toggleAddOrEditForm();
+          this.getUserReview();
+        }
+      });
+    }
   }
 
   public editReview(): void {
-    this.reviewService.updateReview(this.reviewForm.value).subscribe({
-      next: (response: any) => {
-        this.dialogRef.close(true);
-      },
-      error: (error) => {
-      },
-      complete: () => {
-        this.emitNewMessage('updated-review');
-        this.toggleAddOrEditForm();
-        this.getUserReview();
-      }
-    });
+    if (this.reviewForm.valid) {
+      this.reviewService.updateReview(this.reviewForm.value).subscribe({
+        next: (response: any) => {
+          this.dialogRef.close(true);
+        },
+        error: (error) => {
+        },
+        complete: () => {
+          this.emitNewMessage('updated-review');
+          this.toggleAddOrEditForm();
+          this.getUserReview();
+        }
+      });
+    }
   }
 
   public removeReview(): void {

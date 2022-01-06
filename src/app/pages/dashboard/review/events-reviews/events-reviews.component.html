@@ -1,1 +1,49 @@
-<p>events-reviews works!</p>
+<div class="reviews-container">
+  <div class="title-container">
+    <h2>Events reviews</h2>
+  </div>
+
+  <table mat-table [dataSource]="reviews" class="reviews-table">
+    <ng-container matColumnDef="event-name">
+      <th mat-header-cell *matHeaderCellDef>Event Name</th>
+      <td mat-cell *matCellDef="let element">{{element.event.name | titlecase}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef>User Name</th>
+      <td mat-cell *matCellDef="let element">{{element.user.firstName | titlecase}}
+        {{element.user.lastName | titlecase}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{element.title | titlecase}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef>Rating</th>
+      <td mat-cell *matCellDef="let element;let i = index" class="rating-container">
+        {{element.rating}}
+        <mat-icon>star</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+      <th mat-header-cell *matHeaderCellDef>Message</th>
+      <td mat-cell *matCellDef="let element" class="review-description">{{element.message}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{element.date | date: 'dd MMM yyyy, hh:mm'}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div *ngIf="!fetchedReviews">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

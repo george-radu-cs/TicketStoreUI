@@ -16,7 +16,7 @@
 
   <ng-container matColumnDef="bought-time">
     <th mat-header-cell *matHeaderCellDef>Bought on</th>
-    <td mat-cell *matCellDef="let element">{{formatDate(element.boughtTime)}}</td>
+    <td mat-cell *matCellDef="let element">{{element.boughtTime | date: 'dd MMM yyyy, hh:mm'}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
