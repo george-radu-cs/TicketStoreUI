@@ -26,6 +26,10 @@ export class ReviewService {
     return this.http.get<Review[]>(`${this.reviewUrl}/user-reviews/${userId}`, this.httpHeaders);
   }
 
+  public getOrganizerReviews(organizerId: string): Observable<Review[]> {
+    return this.http.get<Review[]>(`${this.reviewUrl}/organizer-reviews/${organizerId}`, this.httpHeaders);
+  }
+
   public getEventReviews(eventId: string): Observable<Review[]> {
     return this.http.get<Review[]>(`${this.reviewUrl}/event-reviews/${eventId}`, this.httpHeaders);
   }

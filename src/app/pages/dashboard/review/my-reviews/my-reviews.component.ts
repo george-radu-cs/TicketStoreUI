@@ -3,7 +3,6 @@ import {User} from '../../../../interfaces/user';
 import {Review} from '../../../../interfaces/review';
 import {DataService} from '../../../../services/data.service';
 import {ReviewService} from '../../../../services/review.service';
-import * as dayjs from 'dayjs';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AddEditReviewComponent} from '../add-edit-review/add-edit-review.component';
 
@@ -30,10 +29,6 @@ export class MyReviewsComponent implements OnInit {
       this.user = u;
       this.getMyReviews();
     });
-  }
-
-  public formatDate(date: string): string {
-    return dayjs(date.toLocaleLowerCase()).format('DD-MMM-YYYY, hh:mm').toString();
   }
 
   public formatDescription(message: string): string {
@@ -69,6 +64,8 @@ export class MyReviewsComponent implements OnInit {
           this.fetchedReviews = true;
         }
       });
+    } else { // if we didn't get the user we can't get reviews either
+      this.fetchedReviews = true;
     }
   }
 

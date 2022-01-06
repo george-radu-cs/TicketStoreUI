@@ -4,7 +4,6 @@ import {DataService} from '../../../../services/data.service';
 import {Router} from '@angular/router';
 import {Event} from '../../../../interfaces/event';
 import {EventService} from '../../../../services/event.service';
-import * as dayjs from 'dayjs';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AddEditEventComponent} from '../add-edit-event/add-edit-event.component';
 
@@ -46,10 +45,6 @@ export class EventsComponent implements OnInit {
         }
       }
     );
-  }
-
-  public formatDate(date: string): string {
-    return dayjs(date.toLocaleLowerCase()).format('DD-MMM-YYYY').toString();
   }
 
   public openModal(event?: Event): void {

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {EventService} from '../../../../services/event.service';
 import {Event} from '../../../../interfaces/event';
-import * as dayjs from 'dayjs';
 import {Review} from '../../../../interfaces/review';
 import {Ticket} from '../../../../interfaces/ticket';
 import {TicketService} from '../../../../services/ticket.service';
@@ -41,10 +40,6 @@ export class EventComponent implements OnInit {
         this.getCurrentUser();
       }
     });
-  }
-
-  public formatDate(date: string): string {
-    return dayjs(date.toLocaleLowerCase()).format('DD-MMM-YYYY, hh:mm').toString();
   }
 
   public getEventTicketsSold(): number {

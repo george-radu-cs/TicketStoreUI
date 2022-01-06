@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Review} from '../../../../interfaces/review';
-import * as dayjs from 'dayjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -29,10 +28,6 @@ export class ReviewComponent implements OnInit, OnChanges {
         rating: [{value: this.review ? Number(this.review.rating) : 0, disabled: true}]
       });
     }
-  }
-
-  public formatDate(date: string): string {
-    return dayjs(date.toLocaleLowerCase()).format('DD-MMM-YYYY').toString();
   }
 
 }
