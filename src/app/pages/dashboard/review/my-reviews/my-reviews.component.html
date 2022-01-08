@@ -35,7 +35,7 @@
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef>View</th>
       <td mat-cell *matCellDef="let element" (click)="viewReview(element)">
-        <mat-icon>
+        <mat-icon matTooltip="View review" aria-label="view-review">
           pageviewicon
         </mat-icon>
       </td>
@@ -44,7 +44,7 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef>Delete</th>
       <td mat-cell *matCellDef="let element" (click)="deleteReview(element)">
-        <mat-icon>
+        <mat-icon matTooltip="Delete review" matTooltipClass="tooltip-danger" aria-label="delete-review">
           delete
         </mat-icon>
       </td>

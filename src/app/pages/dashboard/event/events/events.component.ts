@@ -6,6 +6,10 @@ import {Event} from '../../../../interfaces/event';
 import {EventService} from '../../../../services/event.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AddEditEventComponent} from '../add-edit-event/add-edit-event.component';
+import {PageEvent} from '@angular/material/paginator';
+import {FilterEvents} from '../../../../interfaces/filter-events';
+import {limit, snackbarDuration} from '../../../../shared/utils/utils';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-events',
@@ -17,12 +21,19 @@ export class EventsComponent implements OnInit {
   public events: Event[] = [];
   public fetchedEvents: boolean = false;
   public displayedColumns = ['id', 'name', 'category', 'genre', 'address', 'start-date', 'end-date', 'view', 'edit', 'delete'];
+  public length: number = limit;
+  public pageSize: number = limit;
+  private filterEventsOptions: FilterEvents = {
+    limit: limit,
+    offset: 0,
+  };
 
   constructor(
     private dataService: DataService,
     private eventService: EventService,
     private router: Router,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) {
   }
 
@@ -31,10 +42,39 @@ export class EventsComponent implements OnInit {
     this.getEvents();
   }
 
-  private getEvents() {
-    this.eventService.getEvents().subscribe({
+  private onChangeEvents(message: string): void {
+    this.snackBar.open(message, '', {duration: snackbarDuration});
+  }
+
+  public getEvents(pageEvent?: PageEvent) {
+    let previousPageIndex = 0;
+    let pageIndex = 1;
+    if (pageEvent) { // if not the first call set the new offset
+      this.filterEventsOptions.offset = pageEvent.pageIndex * limit;
+      if (pageEvent.previousPageIndex) {
+        previousPageIndex = pageEvent.previousPageIndex + 1;
+      }
+      pageIndex = pageEvent.pageIndex + 1;
+    }
+    this.eventService.getEvents(this.filterEventsOptions).subscribe({
         next: (result: Event[]) => {
           this.events = result;
+          // if fetched new events
+          if (previousPageIndex < pageIndex && pageIndex * limit === this.length) {
+            // update the length of the paginator dynamic based on events received
+            if (this.events.length < limit) { // no more ref => set the length for paginator to match the number of
+              // events fetched until now and stop the user to try to fetch more events
+              this.length = this.length - limit + this.events.length;
+            } else { // if we got $limit of events than we can try next time to get the same amount
+              this.length += limit;
+            }
+          } else { // if the paginator moved to a smaller index
+            let toRemove = (this.length - limit) % limit;
+            // if we received less than $limit of events restore the length to a number divisible by $limit
+            // else keep the length the same
+            toRemove = toRemove !== 0 ? toRemove - limit : 0;
+            this.length = this.length - toRemove;
+          }
         },
         error: (error) => {
           this.events = [];
@@ -55,8 +95,9 @@ export class EventsComponent implements OnInit {
     dialogConfig.height = window.innerHeight * 0.9 + 'px';
     dialogConfig.data = data; // set the data
     const dialogRef = this.dialog.open(AddEditEventComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) { // if result is true the create or update was successfully
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result) {
+        this.onChangeEvents(result);
         this.getEvents(); // so we fetch the events to have the updated data
       }
     });
@@ -82,8 +123,10 @@ export class EventsComponent implements OnInit {
     this.eventService.deleteEvent(event.id).subscribe({
       next: (response: any) => {
       },
-      error: (error) => {},
+      error: (error) => {
+      },
       complete: () => {
+        this.onChangeEvents('Removed event successfully');
         this.getEvents();
       }
     });

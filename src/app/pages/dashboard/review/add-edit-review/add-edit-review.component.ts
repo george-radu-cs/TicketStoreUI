@@ -65,6 +65,12 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
     this.isCreatingOrEditing = !this.isCreatingOrEditing;
   }
 
+  private resetReviewForm(): void {
+    this.reviewForm.get('title')?.setValue('');
+    this.reviewForm.get('message')?.setValue('');
+    this.reviewForm.get('rating')?.setValue(0);
+  }
+
   public getUserReview(): void {
     if (this.userId && this.eventId) {
       this.reviewService.getReviewById(this.userId, this.eventId).subscribe({
@@ -83,7 +89,6 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
   }
 
   public addReview(): void {
-    console.log(this.reviewForm.value)
     if (this.reviewForm.valid) {
       this.reviewService.createReview(this.reviewForm.value).subscribe({
         next: (response: any) => {
@@ -126,6 +131,7 @@ export class AddEditReviewComponent implements OnInit, OnChanges {
       error: (error) => {
       },
       complete: () => {
+        this.resetReviewForm();
         this.emitNewMessage('deleted-review');
         this.getUserReview();
       }

@@ -154,7 +154,7 @@ export class AddEditEventComponent implements OnInit {
     if (this.eventForm.valid) {
       this.eventService.createEvent(eventToCreate).subscribe({
         next: (result: any) => {
-          this.dialogRef.close(true);
+          this.dialogRef.close('Added event successfully!');
         },
         error: (error) => {
         },
@@ -168,7 +168,7 @@ export class AddEditEventComponent implements OnInit {
     if (this.eventForm.valid) {
       this.eventService.editEvent(this.eventForm.value).subscribe({
         next: (result: any) => {
-          this.dialogRef.close(true);
+          this.dialogRef.close('Updated event successfully!');
         },
         error: (error) => {
         },

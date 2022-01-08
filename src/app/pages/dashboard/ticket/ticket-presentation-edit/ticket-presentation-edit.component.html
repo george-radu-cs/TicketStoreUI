@@ -10,10 +10,10 @@
           [ticket]="ticket"
           [userId]="ticket.userId"
           [eventId]="ticket.eventId"
-          (onTicketChanged)="emitNewMessage($event)"
+          [eventTicketTypes]="ticketTypes"
         ></app-add-edit-ticket>
         <button (click)="toggleAddOrEditForm()">
-          <mat-icon>close</mat-icon>
+          <mat-icon matTooltip="Close" aria-label="close">close</mat-icon>
         </button>
       </ng-template>
       <ng-template #elseBlockPresentation>
@@ -22,15 +22,17 @@
         ></app-ticket>
         <div class="multiple-buttons-container">
           <div class="button-column">
-            <div>Edit</div>
             <button (click)="toggleAddOrEditForm()">
-              <mat-icon>edit</mat-icon>
+              <mat-icon matTooltip="Edit ticket" aria-label="edit-ticket">
+                edit
+              </mat-icon>
             </button>
           </div>
           <div class="button-column">
-            <div>Remove</div>
             <button (click)="removeTicket()">
-              <mat-icon>delete</mat-icon>
+              <mat-icon matTooltip="Delete ticket" matTooltipClass="tooltip-danger" aria-label="delete-ticket">
+                delete
+              </mat-icon>
             </button>
           </div>
         </div>

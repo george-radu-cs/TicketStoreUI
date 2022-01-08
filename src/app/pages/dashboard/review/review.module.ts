@@ -14,6 +14,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {EventsReviewsComponent} from './events-reviews/events-reviews.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -28,17 +29,18 @@ import {EventsReviewsComponent} from './events-reviews/events-reviews.component'
     ReviewComponent,
     AddEditReviewComponent
   ],
-  imports: [
-    CommonModule,
-    ReviewRoutingModule,
-    FontAwesomeTestingModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    NgxStarRatingModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        CommonModule,
+        ReviewRoutingModule,
+        FontAwesomeTestingModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        NgxStarRatingModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
+        MatTooltipModule
+    ],
   providers: [
     {provide: MAT_DIALOG_DATA, useValue: {}},
     {provide: MatDialogRef, useValue: null}

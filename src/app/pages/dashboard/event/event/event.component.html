@@ -148,11 +148,13 @@
           </div>
         </div>
       </div>
+
       <div class="container-column">
-        <div *ngIf="user && user.id !== ''">
+        <div *ngIf="user && user.id !== '' && event && event.ticketTypes">
           <app-buyer-event-tickets
             [userId]="user.id"
             [eventId]="id"
+            [ticketTypes]="event.ticketTypes"
           ></app-buyer-event-tickets>
         </div>
       </div>

@@ -13,6 +13,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {TicketModule} from '../ticket/ticket.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import {TicketModule} from '../ticket/ticket.module';
     MatSelectModule,
     MatProgressSpinnerModule,
     TicketModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatSnackBarModule,
   ]
 })
 export class EventModule {

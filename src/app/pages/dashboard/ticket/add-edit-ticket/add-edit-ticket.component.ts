@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Ticket} from '../../../../interfaces/ticket';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketService} from '../../../../services/ticket.service';
@@ -6,19 +6,19 @@ import {selectOption} from '../../../../interfaces/select-option';
 import {EventService} from '../../../../services/event.service';
 import {Event} from '../../../../interfaces/event';
 import {TicketTypes} from '../../../../interfaces/ticket-types';
+import {BuyerTicketsService} from '../../../../shared/services/buyer-tickets.service';
 
 @Component({
   selector: 'app-add-edit-ticket',
   templateUrl: './add-edit-ticket.component.html',
   styleUrls: ['./add-edit-ticket.component.css']
 })
-export class AddEditTicketComponent implements OnInit, OnChanges {
+export class AddEditTicketComponent implements OnInit, OnChanges, OnDestroy {
   @Input() ticket!: Ticket;
   @Input() userId!: string;
   @Input() eventId!: string;
-  @Output() onTicketChanged: EventEmitter<any> = new EventEmitter();
+  @Input() eventTicketTypes!: TicketTypes;
 
-  private eventTicketTypes!: TicketTypes;
   public ticketForm!: FormGroup;
   public title: string = 'Buy ticket';
 
@@ -28,6 +28,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
     private formBuilder: FormBuilder,
     private eventService: EventService,
     private ticketService: TicketService,
+    private buyerTicketService: BuyerTicketsService,
   ) {
     this.initForm();
   }
@@ -39,13 +40,20 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
     if (changes['userId'] !== undefined || changes['eventId'] !== undefined) {
       if (this.userId !== '' && this.eventId !== '') {
         this.initForm();
-        this.getEvent();
+        // this.getEvent();
       }
     }
     if (changes['ticket'] !== undefined) {
       this.title = 'Edit ticket';
       this.setEditValues();
     }
+    if(changes['eventTicketTypes']!==undefined) {
+      this.createNewTicketTypes();
+      this.syncInputs();
+    }
+  }
+
+  ngOnDestroy() {
   }
 
   private initForm(): void {
@@ -73,6 +81,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
   }
 
   private createNewTicketTypes(): void {
+    this.ticketTypes = [];
     this.ticketTypes.push(
       {value: 'STANDARD', viewValue: 'Standard'},
       {value: 'VIP', viewValue: 'Vip'},
@@ -110,8 +119,8 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
     });
   }
 
-  public emitNewMessage(value: string) {
-    this.onTicketChanged.emit(value);
+  private emitNewMessage(message: string) {
+    this.buyerTicketService.changeTickets(message)
   }
 
   public addTicket(): void {
@@ -123,7 +132,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
 
         },
         complete: () => {
-          this.emitNewMessage('bought-ticket');
+          this.emitNewMessage('Bought ticket');
         }
       });
     }
@@ -138,7 +147,7 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
 
         },
         complete: () => {
-          this.emitNewMessage('edited-ticket');
+          this.emitNewMessage('Changed ticket type successfully');
         }
       });
     }
@@ -149,7 +158,8 @@ export class AddEditTicketComponent implements OnInit, OnChanges {
       next: (event: Event) => {
         this.eventTicketTypes = event.ticketTypes;
       },
-      error: (error) => {},
+      error: (error) => {
+      },
       complete: () => {
         this.createNewTicketTypes();
         this.syncInputs();

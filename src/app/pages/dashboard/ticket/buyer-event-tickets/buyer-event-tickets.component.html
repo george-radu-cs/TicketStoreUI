@@ -1,23 +1,16 @@
 <div class="container">
   <h2>Tickets bought</h2>
-  <div
-    *ngIf="ticketsBought && ticketsBought.length !== 0;then thenBlockTicketsBought else elseBlockTicketsBought"></div>
-  <ng-template #thenBlockTicketsBought>
-    <div *ngFor="let ticket of ticketsBought;let i = index">
-      <app-ticket-presentation-edit
-        [ticket]="ticket"
-        (onTicketChanged)="refreshTickets()"
-      ></app-ticket-presentation-edit>
-    </div>
-  </ng-template>
-  <ng-template #elseBlockTicketsBought>
-    <div>No tickets bought.</div>
-  </ng-template>
+  <div *ngFor="let ticket of ticketsBought;let i = index">
+    <app-ticket-presentation-edit
+      [ticket]="ticket"
+    ></app-ticket-presentation-edit>
+  </div>
+  <div *ngIf="ticketsBought.length === 0">No tickets bought.</div>
   <div>
     <app-add-edit-ticket
       [userId]="userId"
       [eventId]="eventId"
-      (onTicketChanged)="refreshTickets()"
+      [eventTicketTypes]="ticketTypes"
     ></app-add-edit-ticket>
   </div>
 </div>
