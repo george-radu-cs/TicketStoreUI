@@ -30,3 +30,7 @@ mat-icon:hover {
 h2 {
   font-size: 2rem;
 }
+
+.mat-paginator {
+  width: 90vw;
+}

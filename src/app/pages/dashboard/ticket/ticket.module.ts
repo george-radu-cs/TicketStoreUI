@@ -17,6 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -27,24 +28,25 @@ import {MatTableModule} from '@angular/material/table';
     TicketsComponent,
     AddEditTicketComponent,
     BuyerEventTicketsComponent,
-    TicketPresentationEditComponent
+    TicketPresentationEditComponent,
   ],
   exports: [
     TicketsComponent,
     TicketsComponent,
     BuyerEventTicketsComponent
   ],
-  imports: [
-    CommonModule,
-    TicketRoutingModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTableModule
-  ]
+    imports: [
+        CommonModule,
+        TicketRoutingModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTableModule,
+        MatTooltipModule
+    ]
 })
 export class TicketModule { }

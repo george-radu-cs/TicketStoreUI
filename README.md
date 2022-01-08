@@ -72,9 +72,9 @@ The UI is made for an ADMIN user to simplify it, because all I want was to showc
   - [x] tickets sold by an organisation page
 - [x] update-guards
 - [x] set guards for roles
-- [ ] add a paginator
+- [x] add a paginator
 - [ ] add filter for events
-- [ ] create user specific pages
+- [ ] create more user specific pages
   - [ ] page to manage(create, update, delete) events
   - [ ] page to only see and buy tickets for events
   - [ ] profile page

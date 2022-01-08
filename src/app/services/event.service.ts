@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {filter, Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Event} from '../interfaces/event';
+import {FilterEvents} from '../interfaces/filter-events';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,9 @@ export class EventService {
   constructor(private http: HttpClient) {
   }
 
-  public getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.eventUrl}/events`, this.httpHeaders);
+  public getEvents(filterEventsOptions: FilterEvents): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventUrl}/events?filter=${filterEventsOptions.limit}&offset=${filterEventsOptions.offset}`
+      , this.httpHeaders);
   }
 
   public getOrganizerEvents(id: string): Observable<Event[]> {

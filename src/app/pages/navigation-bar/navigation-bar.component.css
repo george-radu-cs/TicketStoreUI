@@ -14,7 +14,7 @@
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 nav {
@@ -27,7 +27,7 @@ nav {
 
 a {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1vh 1vw;
 }
 
@@ -55,7 +55,7 @@ a:active {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .btn-logout:hover {
